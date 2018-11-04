@@ -5,7 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class khdliw
+public class Main
 {
     // instance variables - replace the example below with your own
     private int x;
@@ -13,11 +13,7 @@ public class khdliw
     /**
      * Constructor for objects of class khdliw
      */
-    public khdliw()
-    {
-        // initialise instance variables
-        x = 0;
-    }
+    
 
     /**
      * An example of a method - replace this comment with your own
