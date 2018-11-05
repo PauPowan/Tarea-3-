@@ -12,7 +12,7 @@ public class Demo
       }
       Imagen i = new Imagen(entrada);
   
-   i.dibujar();
+      i.dibujar();
      
      
       int m[][] = i.getMatriz();
@@ -28,11 +28,11 @@ public class Demo
       
       for(int f = 0; f < m.length; f++){
          for(int c = 0; c < m[f].length; c++){
-             fNormal = (int) ((double) f / m.length  * 100.0) ;
-             cNormal = (int) ((double) c / m[f].length *100.0) ;
+            fNormal = (int) ((double) f / m.length  * 100.0) ;
+            cNormal = (int) ((double) c / m[f].length *100.0) ;
                 
-             if(fNormal==cNormal){
-                m[f][c]=0; 
+            if(fNormal==cNormal){
+                m[f][c]=255000000; 
              }
          } 
       }
