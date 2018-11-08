@@ -9,11 +9,9 @@ public class Main
 {
     // instance variables - replace the example below with your own
     private int x;
-
-    /**
-     * Constructor for objects of class khdliw
-     */
-    
+    public static void main(String argv[]){
+        prueba2 a= new prueba2();
+    }
 
     /**
      * An example of a method - replace this comment with your own
