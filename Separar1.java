@@ -11,6 +11,7 @@ public class Separar1
     int cantFiguras;
     int grupos;
     ImagenPequeña[] figuras;
+    ImagenPequeña[] figuras1;
     ImagenPequeña[][] comparar;
     ImagenPequeña[] resultado;
     ImagenPequeña[] separados;
@@ -18,55 +19,65 @@ public class Separar1
     public Separar1(int [][]base,int cantFiguras,int grupos)
     {
         this.base=base;
-        this.cantFiguras=cantFiguras;
+        this.cantFiguras=cantFiguras;        
         this.grupos=grupos;
         figuras=new ImagenPequeña[cantFiguras];
+        figuras1=new ImagenPequeña[cantFiguras];
         separados=new ImagenPequeña[grupos];
         resultado=new ImagenPequeña[grupos];
         for(int j=0;j<grupos;j++){
             separados[j]=new ImagenPequeña(this.base);
             resultado[j]=new ImagenPequeña(this.base);
         }
-        separar();
+        //separar();
     }
 
-    public void separar(){
+    public  ImagenPequeña[] separar(){
         for(int i=0;i<figuras.length;i++){
             figuras[i]=new ImagenPequeña(base);
+            figuras1[i]=new ImagenPequeña(base);
         }
         int fondo=base[0][0];
         for(int i=0;i<base.length;i++){
             for(int j=0;j<base[0].length;j++){
                 if(base[i][j]!=fondo){
-                    figuras[(base[i][j]/4000)-1].añadir(i,j);
+                    figuras1[(base[i][j]/4000)-1].añadir(i,j);
                 }
             }
         }
-        agrupar();
+        return agrupar();
         //int x= (int)(Math.random()*3);
 
     }
 
-    public void agrupar(){
+    public  ImagenPequeña[] agrupar(){
         comparar=new ImagenPequeña[grupos][cantFiguras];
         iniciarMatriz(comparar);
         int masParecido=0;
         int distancia=0;
         int distanciaMenor=0;
         int[] representantes=escogerRepresentantes();
+        copiarVector(figuras,figuras1);
         do{
             if(!comparar(resultado,separados)){
                 pasarVector(separados,resultado);
+                copiarVector(figuras,figuras1);
                 representantes=nuevosRepresentantes();
-                iniciarMatriz(comparar);
+                iniciarMatriz(comparar);                
+            }
+            
+            for(int i=0;i<representantes.length;i++){
+                añadirAlGrupo(i,representantes[i]);
             }
             for(int i=0;i<figuras.length;i++){
                 distanciaMenor=base.length*base[0].length;
                 for(int j=0;j<representantes.length;j++){
-                    distancia=Math.abs(figuras[i].getArea()-figuras[representantes[j]].getArea());
-                    if(distancia<distanciaMenor){
-                        distanciaMenor=distancia;
-                        masParecido=j;
+                    if(figuras[i].getArea()!=0){
+                        distancia=Math.abs(figuras[i].getArea()-comparar[j][0].getArea());
+                        if(distancia<=distanciaMenor){
+                            distanciaMenor=distancia;
+                            masParecido=j;
+                        }
                     }
                 }
                 añadirAlGrupo(masParecido,i);
@@ -77,11 +88,11 @@ public class Separar1
                 }
             }
             // for(int i=0;i<separados.length;i++){
-                // imagen = new Imagen(resultado[i].getMatriz());
-                // imagen.dibujar();
+            // imagen = new Imagen(resultado[i].getMatriz());
+            // imagen.dibujar();
             // }
         }while(!comparar(resultado,separados));
-
+        return resultado;
     }
 
     private void iniciarMatriz(ImagenPequeña[][] m){
@@ -97,6 +108,12 @@ public class Separar1
             v1[i].reiniciar();
             v1[i].unir(v2[i].getMatriz());
             v2[i].reiniciar();
+        }
+    }
+    private void copiarVector(ImagenPequeña[] v1,ImagenPequeña[] v2){
+        for(int i=0;i<v1.length;i++){
+            v1[i].reiniciar();
+            v1[i].unir(v2[i].getMatriz());
         }
     }
 
@@ -130,19 +147,18 @@ public class Separar1
             }
             promedioAreas=sumaAreas/areas;
             distanciaMenor=promedioAreas;
+            nuevoRep=0;
             for(int j=0;j<comparar[0].length;j++){ 
-                if(comparar[i][j].getArea()!=0 ){
-                    distancia=Math.abs(promedioAreas-comparar[i][j].getArea());
-                    if(distancia<distanciaMenor){
-                        distanciaMenor=distancia;
-                        nuevoRep=j;
-                    }
+                distancia=Math.abs(promedioAreas-comparar[i][j].getArea());
+                if(distancia<distanciaMenor){
+                    distanciaMenor=distancia;
+                    nuevoRep=j;
                 }
-
+               
             }
             for(int k=0;k<figuras.length;k++){
                 if(figuras[k].comparar(comparar[i][nuevoRep].getMatriz())){
-                    nuevosRep[i]=nuevoRep;
+                    nuevosRep[i]=k;
                 }
             }
         }       
@@ -175,5 +191,6 @@ public class Separar1
             f++;
         };
         comparar[grupo][f].unir(figuras[añadir].getMatriz());
+        figuras[añadir].reiniciar();
     }
 }

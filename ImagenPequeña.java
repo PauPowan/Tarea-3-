@@ -47,6 +47,7 @@ public class ImagenPequeña
                 figura[i][j]=fondo;
             }
         }
+        area=0;
     }
 
     public void unir(int[][] otra){
@@ -58,7 +59,15 @@ public class ImagenPequeña
             }
         }
     }
-
+    public void pintar(int[][] otra){
+        for(int i=0;i<figura.length;i++){
+            for(int j=0;j<figura[0].length;j++){
+                if(figura[i][j]!=fondo){
+                    figura[i][j]=otra[i][j];
+                }
+                }
+            }
+    }
     public int[][] getMatriz(){
         return figura;
     }
