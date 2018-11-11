@@ -1,18 +1,11 @@
-
-/**
- * Write a description of class ImagenPequeña here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class ImagenPequeña
+public class ImagenPrograma
 {
-    // instance variables - replace the example below with your own
-    int area; 
-    int [][] figura;
-    int fondo;
-    public ImagenPequeña(int[][] matriz)
-    {
+    //atributos
+    private int area; 
+    private int [][] figura;
+    private int fondo;
+    //métodos
+    public ImagenPrograma(int[][] matriz){
         area=0;
         fondo=matriz[0][0];
         figura=new int [matriz.length][matriz[0].length];
@@ -59,6 +52,7 @@ public class ImagenPequeña
             }
         }
     }
+    
     public void pintar(int[][] otra){
         for(int i=0;i<figura.length;i++){
             for(int j=0;j<figura[0].length;j++){
@@ -68,6 +62,7 @@ public class ImagenPequeña
                 }
             }
     }
+    
     public int[][] getMatriz(){
         return figura;
     }

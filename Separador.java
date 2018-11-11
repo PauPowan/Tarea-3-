@@ -1,42 +1,40 @@
 
-/**
- * Write a description of class Separar1 here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Separar1
+public class Separador
 {
-    int[][] base;
-    int cantFiguras;
-    int grupos;
-    ImagenPequeña[] figuras;
-    ImagenPequeña[] figuras1;
-    ImagenPequeña[][] comparar;
-    ImagenPequeña[] resultado;
-    ImagenPequeña[] separados;
-    Imagen imagen;  
-    public Separar1(int [][]base,int cantFiguras,int grupos)
+    //atributos
+    private int[][] base;
+    private int cantFiguras;
+    private int grupos;
+    private ImagenPrograma[] figuras;
+    private ImagenPrograma[] figuras1;
+    private ImagenPrograma[][] comparar;
+    private ImagenPrograma[] resultado;
+    private ImagenPrograma[] separados;
+    private Imagen imagen;  
+    //métodos
+    public Separador(int [][]base,int cantFiguras,int grupos)
     {
         this.base=base;
         this.cantFiguras=cantFiguras;        
         this.grupos=grupos;
-        figuras=new ImagenPequeña[cantFiguras];
-        figuras1=new ImagenPequeña[cantFiguras];
-        separados=new ImagenPequeña[grupos];
-        resultado=new ImagenPequeña[grupos];
+        figuras=new ImagenPrograma[cantFiguras];
+        figuras1=new ImagenPrograma[cantFiguras];
+        separados=new ImagenPrograma[grupos];
+        resultado=new ImagenPrograma[grupos];
+        
         for(int j=0;j<grupos;j++){
-            separados[j]=new ImagenPequeña(this.base);
-            resultado[j]=new ImagenPequeña(this.base);
+            separados[j]=new ImagenPrograma(this.base);
+            resultado[j]=new ImagenPrograma(this.base);
         }
-        //separar();
+        
     }
 
-    public  ImagenPequeña[] separar(){
+    public  ImagenPrograma[] separar(){
         for(int i=0;i<figuras.length;i++){
-            figuras[i]=new ImagenPequeña(base);
-            figuras1[i]=new ImagenPequeña(base);
+            figuras[i]=new ImagenPrograma(base);
+            figuras1[i]=new ImagenPrograma(base);
         }
+        
         int fondo=base[0][0];
         for(int i=0;i<base.length;i++){
             for(int j=0;j<base[0].length;j++){
@@ -45,19 +43,20 @@ public class Separar1
                 }
             }
         }
+        
         return agrupar();
-        //int x= (int)(Math.random()*3);
 
     }
 
-    public  ImagenPequeña[] agrupar(){
-        comparar=new ImagenPequeña[grupos][cantFiguras];
+    public  ImagenPrograma[] agrupar(){
+        comparar=new ImagenPrograma[grupos][cantFiguras];
         iniciarMatriz(comparar);
         int masParecido=0;
         int distancia=0;
         int distanciaMenor=0;
         int[] representantes=escogerRepresentantes();
         copiarVector(figuras,figuras1);
+        
         do{
             if(!comparar(resultado,separados)){
                 pasarVector(separados,resultado);
@@ -67,8 +66,9 @@ public class Separar1
             }
             
             for(int i=0;i<representantes.length;i++){
-                añadirAlGrupo(i,representantes[i]);
+                anadirAlGrupo(i,representantes[i]);
             }
+            
             for(int i=0;i<figuras.length;i++){
                 distanciaMenor=base.length*base[0].length;
                 for(int j=0;j<representantes.length;j++){
@@ -80,50 +80,59 @@ public class Separar1
                         }
                     }
                 }
-                añadirAlGrupo(masParecido,i);
+                anadirAlGrupo(masParecido,i);
             }            
             for(int i=0;i<grupos;i++){    
                 for(int j=0;j<cantFiguras;j++){            
                     resultado[i].unir(comparar[i][j].getMatriz());
                 }
             }
-            // for(int i=0;i<separados.length;i++){
-            // imagen = new Imagen(resultado[i].getMatriz());
-            // imagen.dibujar();
-            // }
-        }while(!comparar(resultado,separados));
+            /*for(int i=0;i<separados.length;i++){
+            imagen = new Imagen(resultado[i].getMatriz());
+            imagen.dibujar();
+            }*/
+        }
+        while(!comparar(resultado,separados));
+        
         return resultado;
     }
 
-    private void iniciarMatriz(ImagenPequeña[][] m){
+    private void iniciarMatriz(ImagenPrograma[][] m){
+        
         for(int i=0;i<m.length;i++){
             for(int j=0;j<m[0].length;j++){
-                m[i][j]=new ImagenPequeña(base);
+                m[i][j]=new ImagenPrograma(base);
             }
         }
+        
     }
 
-    private void pasarVector(ImagenPequeña[] v1,ImagenPequeña[] v2){
+    private void pasarVector(ImagenPrograma[] v1,ImagenPrograma[] v2){
+        
         for(int i=0;i<v1.length;i++){
             v1[i].reiniciar();
             v1[i].unir(v2[i].getMatriz());
             v2[i].reiniciar();
         }
     }
-    private void copiarVector(ImagenPequeña[] v1,ImagenPequeña[] v2){
+    
+    private void copiarVector(ImagenPrograma[] v1,ImagenPrograma[] v2){
+        
         for(int i=0;i<v1.length;i++){
             v1[i].reiniciar();
             v1[i].unir(v2[i].getMatriz());
         }
     }
 
-    private boolean comparar(ImagenPequeña[] v1,ImagenPequeña[] v2){
+    private boolean comparar(ImagenPrograma[] v1,ImagenPrograma[] v2){
         boolean valido=true;
+        
         for(int i=0;i<v1.length;i++){
             if(!v1[i].comparar(v2[i].getMatriz())){
                 valido=false;
             }
         }
+        
         return valido;
     }
 
@@ -135,6 +144,7 @@ public class Separar1
         double distancia=0.0;
         double distanciaMenor=0.0;
         int nuevoRep=0;
+        //-------------------------------------------------------------------
         for(int i=0;i<comparar.length;i++){
             sumaAreas=0;
             promedioAreas=0;
@@ -145,9 +155,11 @@ public class Separar1
                     sumaAreas+=comparar[i][j].getArea();
                 }
             }
+            //--------------------------------------------------------------
             promedioAreas=sumaAreas/areas;
             distanciaMenor=promedioAreas;
             nuevoRep=0;
+            //--------------------------------------------------------------
             for(int j=0;j<comparar[0].length;j++){ 
                 distancia=Math.abs(promedioAreas-comparar[i][j].getArea());
                 if(distancia<distanciaMenor){
@@ -156,41 +168,52 @@ public class Separar1
                 }
                
             }
+            
             for(int k=0;k<figuras.length;k++){
                 if(figuras[k].comparar(comparar[i][nuevoRep].getMatriz())){
                     nuevosRep[i]=k;
                 }
             }
+            
         }       
         return nuevosRep;
     }
 
     private int[] escogerRepresentantes(){
+        
         int[] rep=new int[grupos];
         for(int i=0;i<grupos;i++){
             do{
                 rep[i]= (int)(Math.random()*cantFiguras);               
             }while(!valido(rep,i,rep[i]));
         }        
+        
         return rep;
     }
 
     private boolean valido(int[] v,int n,int num){
+        
         boolean valido=true;
+        
         for(int i=n-1;i>-1;i--){
             if(num==v[i]){
                 valido=false;
             }
         }
+        
         return valido;
     }
 
-    private void añadirAlGrupo(int grupo,int añadir){
+    private void anadirAlGrupo(int grupo,int anadir){
+        
         int f=0;
+        
         while(comparar[grupo][f].getArea()!=0){
             f++;
         };
-        comparar[grupo][f].unir(figuras[añadir].getMatriz());
-        figuras[añadir].reiniciar();
+        
+        comparar[grupo][f].unir(figuras[anadir].getMatriz());
+        figuras[anadir].reiniciar();
+        
     }
 }
