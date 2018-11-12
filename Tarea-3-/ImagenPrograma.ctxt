@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=ImagenPrograma
+comment1.params=matriz
+comment1.target=ImagenPrograma(int[][])
+comment2.params=f\ c
+comment2.target=void\ a\u00F1adir(int,\ int)
+comment2.text=\r\n\ Pinta\ el\ p\u00EDxel\ actual\ de\ un\ color\ arbitrario\ e\ incrementa\ el\ \u00E1rea\ de\ la\r\n\ figura\ en\ uno\ para\ indicar\ que\ ya\ se\ ha\ a\u00F1adido\r\n\r\n\ @param\ \ int\ f\ n\u00FAmero\ de\ fila\ actual\r\n\ @param\ \ int\ c\ n\u00FAmero\ de\ columna\ actual\r\n\ \r\n\ @return\ No\ posee\r\n\r\n
+comment3.params=otra
+comment3.target=boolean\ comparar(int[][])
+comment3.text=\r\n\ Compara\ si\ dos\ figuras\ son\ iguales\ entre\ s\u00ED\r\n\r\n\ @param\ \ int[][]\ otra\ la\ matr\u00EDz\ a\ comparar\r\n\ \r\n\ @return\ No\ posee\r\n\r\n
+comment4.params=
+comment4.target=int\ getArea()
+comment5.params=
+comment5.target=void\ reiniciar()
+comment5.text=\r\n\ Reinicia\ una\ figura\ pint\u00E1ndola\ del\ color\ del\ fondo\r\n\r\n\ @param\ \ No\ posee\r\n\ \r\n\ @return\ No\ posee\r\n\r\n
+comment6.params=otra
+comment6.target=void\ unir(int[][])
+comment6.text=\r\n\ Une\ la\ figura\ actual\ y\ la\ figura\ a\ comparar\ en\ una\ sola\ imagen\ del\ \r\n\ programa\r\n\r\n\ @param\ \ int[][]\ otra\ la\ matr\u00EDz\ a\ comparar\r\n\ \r\n\ @return\ No\ posee\r\n\r\n
+comment7.params=otra
+comment7.target=void\ pintar(int[][])
+comment7.text=\r\n\ Pinta\ una\ copia\ de\ la\ otra\ figura\ en\ la\ figura\ actual\r\n\r\n\ @param\ \ int[][]\ otra\ la\ otra\ matr\u00EDz\r\n\ \r\n\ @return\ No\ posee\r\n\r\n
+comment8.params=
+comment8.target=int[][]\ getMatriz()
+numComments=9

@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=Main
+comment0.text=\r\n\ Clase\ principal\ del\ programa.\ Este\ programa\ separa\ las\ figuras\ \r\n\ encontradas\ en\ una\ imagen\ en\ grupos\ de\ \u00E1rea\ similar\ con\ el\r\n\ objetivo\ de\ encontrar\ grupos\ de\ figuras\ de\ un\ mismo\ tipo\ o\r\n\ similares\ entre\ s\u00ED.\r\n\ \r\n\ @author\ Sergio\ Mart\u00EDnez,\ Jorge\ Porras,\ Paula\ Po\ Wo\ On\r\n
+comment1.params=argumentos
+comment1.target=void\ main(java.lang.String[])
+numComments=2
