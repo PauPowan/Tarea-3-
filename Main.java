@@ -11,7 +11,13 @@ public class Main
 {
     public static void main(String argumentos[]){
         
-        if(argumentos.length > 0){
+        if(argumentos.length == 1){
+            String entrada = argumentos[0];
+            AnalizadorFiguras analizador = new AnalizadorFiguras(entrada);
+            analizador.ejecutar();
+        }
+ 
+        else if(argumentos.length == 2){
             String entrada = argumentos[0];
             int grupos = Integer.parseInt(argumentos[1]);
             AnalizadorFiguras analizador = new AnalizadorFiguras(entrada,grupos);

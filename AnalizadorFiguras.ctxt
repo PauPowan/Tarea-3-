@@ -1,0 +1,27 @@
+#BlueJ class context
+comment0.target=AnalizadorFiguras
+comment1.params=
+comment1.target=AnalizadorFiguras()
+comment2.params=entrada\ grupos
+comment2.target=AnalizadorFiguras(java.lang.String,\ int)
+comment3.params=entrada
+comment3.target=AnalizadorFiguras(java.lang.String)
+comment4.params=
+comment4.target=void\ ejecutar()
+comment4.text=\r\n\ M\u00E9todo\ que\ ejecuta\ la\ mayor\u00EDa\ de\ procesos\ necesarios\ para\ el\ an\u00E1lisis\r\n\ de\ la\ imagen.\ Utiliza\ una\ copia\ de\ la\ matr\u00EDz\ original\ en\ la\ que\ separa\r\n\ los\ pixeles\ que\ componen\ las\ figuras\ de\ aquellos\ que\ componen\ el\ fondo.\r\n\ Para\ esta\ separaci\u00F3n\ recorre\ la\ matr\u00EDz\ en\ dos\ direcciones\ para\ evitar\r\n\ obviar\ p\u00EDxeles.\ Luego\ procede\ a\ invocar\ al\ separador\ para\ generar\ cada\r\n\ figura\ por\ separado.\ Este\ m\u00E9todo\ muestra\ gr\u00E1ficamente\ las\ diferentes\r\n\ partes\ del\ proceso\ (Imagen\ original,\ imagen\ procesada\ y\ grupos\ de\ im\u00E1genes)\r\n\ \r\n\ @param\ No\ posee\r\n\ @return\ No\ posee\r\n\ \r\n
+comment5.params=matriz
+comment5.target=void\ pintar(int[][])
+comment5.text=\r\n\ Primer\ m\u00E9todo\ para\ la\ recursi\u00F3n\ que\ "pinta"\ las\ figuras\ y\ lleva\ un\ \r\n\ control\ del\ n\u00FAmero\ de\ ellas.\r\n\r\n\ @param\ \ int\ matriz[][]\ la\ matr\u00EDz\ que\ se\ encuentra\ analizando\r\n\ @return\ No\ posee\r\n\r\n
+comment6.params=f\ c\ numeroFigura\ matriz
+comment6.target=void\ pintar(int,\ int,\ int,\ int[][])
+comment6.text=\r\n\ Para\ cada\ figura\ que\ encuentre\ le\ asigna\ un\ color\ nuevo\ en\ el\ que\ se\r\n\ pintar\u00E1\ para\ diferenciarla\ y\ la\ seguir\u00E1\ recorriendo\ hasta\ pintarla\ en\ \r\n\ su\ totalidad\r\n\r\n\ @param\ \ int\ f\ n\u00FAmero\ de\ fila\ actual\r\n\ @param\ \ int\ c\ n\u00FAmero\ de\ columna\ actual\r\n\ @param\ \ int\ numeroFigura\ el\ n\u00FAmero\ de\ la\ figura\ que\ se\ est\u00E1\ pintando\r\n\ @param\ \ int[][]\ matriz\ la\ matr\u00EDz\ que\ se\ encuentra\ analizando\r\n\ \r\n\ @return\ No\ posee\r\n\ \r\n
+comment7.params=f\ c\ matriz
+comment7.target=void\ pintarFondo(int,\ int,\ int[][])
+comment7.text=\r\n\ Primer\ m\u00E9todo\ para\ la\ recursi\u00F3n\ que\ "pinta"\ el\ fondo\ de\ la\r\n\ imagen\ en\ la\ matr\u00EDz\ para\ separarlo\ de\ las\ figuras.\ A\ partir\ de\ un\ p\u00EDxel\r\n\ del\ color\ del\ fondo,\ analiza\ los\ p\u00EDxeles\ adyacentes\ en\ todas\ las\ \r\n\ direcciones.\r\n\r\n\ @param\ \ int\ f\ n\u00FAmero\ de\ fila\ actual\r\n\ @param\ \ int\ c\ n\u00FAmero\ de\ columna\ actual\r\n\ @param\ \ int[][]\ matriz\ la\ matr\u00EDz\ que\ se\ encuentra\ analizando\r\n\ \r\n\ @return\ No\ posee\r\n\ \r\n
+comment8.params=f\ c\ color\ matriz
+comment8.target=boolean\ valido(int,\ int,\ int,\ int[][])
+comment8.text=\r\n\ Comprueba\ si\ el\ p\u00EDxel\ actual\ se\ encuentra\ dentro\ de\ los\ l\u00EDmites\ de\ la\ \r\n\ imagen\ y\ si\ es\ del\ color\ solicitado.\r\n\r\n\ @param\ \ int\ f\ n\u00FAmero\ de\ fila\ actual\r\n\ @param\ \ int\ c\ n\u00FAmero\ de\ columna\ actual\r\n\ @param\ \ int\ color\ una\ representaci\u00F3n\ num\u00E9rica\ del\ color\ indicado\r\n\ @param\ \ int[][]\ matriz\ la\ matr\u00EDz\ que\ se\ encuentra\ analizando\r\n\ \r\n\ @return\ boolean\ una\ variable\ booleana\ que\ representa\ si\ el\ pixel\ actual\r\n\ presenta\ las\ caracter\u00EDsticas\ solicitadas.\r\n\ \r\n
+comment9.params=f\ c\ d\ matriz
+comment9.target=void\ pintarFondo(int,\ int,\ int,\ int[][])
+comment9.text=\r\n\ Comprueba\ si\ el\ p\u00EDxel\ adyancente\ al\ actual\ en\ la\ direcci\u00F3n\ indicada\ es\r\n\ parte\ del\ fondo\ y\ lo\ pinta\ en\ caso\ de\ que\ sea\ as\u00ED.\r\n\r\n\ @param\ \ int\ f\ n\u00FAmero\ de\ fila\ actual\r\n\ @param\ \ int\ c\ n\u00FAmero\ de\ columna\ actual\r\n\ @param\ \ int\ d\ un\ \u00EDndice\ que\ indica\ la\ direcci\u00F3n\ en\ que\ se\ mueve\ esta\ iteraci\u00F3n\r\n\ @param\ \ int[][]\ matriz\ la\ matr\u00EDz\ que\ se\ encuentra\ analizando\r\n\ \r\n\ @return\ No\ posee\r\n\ \r\n
+numComments=10
